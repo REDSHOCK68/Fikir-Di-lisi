@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fikir Dişlisi ⚙️ | Yaratıcı Konsept Üreteci</title>
-    <!-- Tailwind CSS -->
+    
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -39,13 +40,19 @@
             }
         }
     </script>
+    
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
+    <!-- Harici style.css Bağlantısı (İsteğe Bağlı) -->
+    <!-- <link rel="stylesheet" href="style.css"> -->
+
+    <!-- Özel CSS Stilleri -->
     <style>
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -58,7 +65,7 @@
             min-height: 100vh;
         }
 
-        /* Glassmorphism utility classes */
+        /* Glassmorphism Stil Sınıfları */
         .glass-panel {
             background: rgba(15, 23, 42, 0.65);
             backdrop-filter: blur(16px);
@@ -73,6 +80,7 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
+        /* Ana Dişli Butonu */
         .gear-btn {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             background: linear-gradient(135deg, rgba(0, 240, 255, 0.2) 0%, rgba(112, 0, 255, 0.3) 100%);
@@ -88,7 +96,7 @@
             transform: translateY(1px);
         }
 
-        /* Gear spinning classes */
+        /* Dişli Animasyon Sınıfları */
         .spinning-fast {
             animation: gearSpinFast 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) infinite !important;
         }
@@ -98,7 +106,7 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Custom Scrollbar */
+        /* Özel Kaydırma Çubuğu (Scrollbar) */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -116,7 +124,7 @@
 </head>
 <body class="text-slate-100 antialiased selection:bg-cyan-500 selection:text-black min-h-screen flex flex-col justify-between">
 
-    <!-- Top Navigation Header -->
+    <!-- Üst Gezinme Çubuğu -->
     <header class="w-full border-b border-slate-800/80 glass-panel sticky top-0 z-40">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
             <div class="flex items-center gap-3">
@@ -145,10 +153,10 @@
         </div>
     </header>
 
-    <!-- Main Interactive Workspace -->
+    <!-- Ana Etkileşim Alanı -->
     <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 w-full flex-1 flex flex-col items-center">
         
-        <!-- Hero Introduction -->
+        <!-- Başlık ve Tanıtım -->
         <div class="text-center max-w-2xl mb-8">
             <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 mb-3">
                 <i class="fa-solid fa-wand-magic-sparkles text-cyan-400"></i> Sınırsız Prosedürel Üretim
@@ -161,7 +169,7 @@
             </p>
         </div>
 
-        <!-- Category Selector (Pills) -->
+        <!-- Kategori Seçici -->
         <div class="w-full glass-panel rounded-2xl p-2 sm:p-3 mb-8">
             <div class="text-xs font-semibold uppercase tracking-wider text-slate-400 px-3 py-1 mb-2 flex justify-between items-center">
                 <span><i class="fa-solid fa-sliders text-cyan-400 mr-1.5"></i> Fikir Kategorisi</span>
@@ -169,7 +177,6 @@
             </div>
             
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2" id="categoryContainer">
-                <!-- Dynamically created or static category tabs -->
                 <button onclick="setCategory('Oyun')" data-cat="Oyun" class="cat-btn active border border-cyan-500/60 bg-cyan-500/20 text-cyan-300 font-semibold p-3 rounded-xl flex flex-col items-center justify-center gap-1.5 text-xs transition-all">
                     <i class="fa-solid fa-gamepad text-lg text-cyan-400"></i>
                     <span>Oyun</span>
@@ -197,22 +204,18 @@
             </div>
         </div>
 
-        <!-- Center Action Gear Button -->
+        <!-- Tetikleyici Dişli Butonu -->
         <div class="relative my-4 flex flex-col items-center">
-            <!-- Ambient Glow -->
             <div id="gearGlow" class="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-500 to-purple-600 blur-2xl opacity-40 scale-125 transition-all duration-500"></div>
 
             <button id="generateBtn" onclick="runGearEngine()" class="gear-btn relative z-10 w-44 h-44 sm:w-52 sm:h-52 rounded-full flex flex-col items-center justify-center group cursor-pointer shadow-2xl overflow-hidden focus:outline-none">
-                <!-- Outer Ring Details -->
                 <div class="absolute inset-1 rounded-full border border-cyan-400/20 group-hover:border-cyan-400/50 transition-all"></div>
                 
-                <!-- Main Gear Icon -->
                 <div id="mainGearIcon" class="relative text-cyan-300 text-5xl sm:text-6xl transition-transform duration-700 group-hover:scale-110">
                     <i class="fa-solid fa-gear filter drop-shadow-[0_0_12px_rgba(0,240,255,0.8)]"></i>
                     <i class="fa-solid fa-cog absolute -bottom-2 -right-3 text-2xl text-purple-400 opacity-80 animate-spin-slow"></i>
                 </div>
 
-                <!-- Text inside button -->
                 <span class="mt-3 text-xs sm:text-sm font-extrabold uppercase tracking-widest text-white drop-shadow-md">
                     DİŞLİYİ ÇALIŞTIR
                 </span>
@@ -220,9 +223,9 @@
             </button>
         </div>
 
-        <!-- Result Presentation Card -->
+        <!-- Sonuç Kartı -->
         <div class="w-full mt-10">
-            <!-- Initial Empty State -->
+            <!-- Başlangıç Durumu -->
             <div id="emptyState" class="glass-panel rounded-2xl p-10 text-center flex flex-col items-center justify-center border border-dashed border-slate-700/60">
                 <div class="w-16 h-16 rounded-full bg-slate-800/80 border border-slate-700 flex items-center justify-center text-slate-400 text-2xl mb-4">
                     <i class="fa-solid fa-lightbulb"></i>
@@ -233,12 +236,10 @@
                 </p>
             </div>
 
-            <!-- Active Output Display Box -->
+            <!-- Aktif Çıktı Kartı -->
             <div id="resultCard" class="hidden glass-panel rounded-2xl p-6 sm:p-8 border border-cyan-500/30 transition-all duration-300 relative overflow-hidden">
-                <!-- Decorative Top Border Glow -->
                 <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500"></div>
 
-                <!-- Card Header Info -->
                 <div class="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-slate-800">
                     <div class="flex items-center gap-3">
                         <span id="resultCategoryBadge" class="px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 flex items-center gap-1.5">
@@ -249,7 +250,6 @@
                         </span>
                     </div>
 
-                    <!-- Action Buttons -->
                     <div class="flex items-center gap-2">
                         <button onclick="copyResultToClipboard()" class="px-3 py-1.5 rounded-lg glass-card text-xs font-medium text-slate-300 hover:text-cyan-300 hover:border-cyan-500/40 transition-all flex items-center gap-1.5" title="Panoya Kopyala">
                             <i class="fa-solid fa-copy text-cyan-400"></i> Kopyala
@@ -260,9 +260,7 @@
                     </div>
                 </div>
 
-                <!-- Idea Content Body -->
                 <div class="py-6 space-y-5">
-                    <!-- Title -->
                     <div>
                         <span class="text-xs font-mono uppercase text-slate-400 tracking-wider">PROJE ADI / BAŞLIK</span>
                         <h3 id="resultTitle" class="text-2xl sm:text-3xl font-extrabold text-white mt-1 text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-cyan-200">
@@ -270,7 +268,6 @@
                         </h3>
                     </div>
 
-                    <!-- Main Pitch / Summary -->
                     <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800/80">
                         <span class="text-xs font-semibold uppercase text-cyan-400 tracking-wider block mb-1">
                             <i class="fa-solid fa-compass mr-1"></i> Ana Konsept & Özet
@@ -280,9 +277,7 @@
                         </p>
                     </div>
 
-                    <!-- Grid Specs Details -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="specsGrid">
-                        <!-- Spec Item 1 -->
                         <div class="p-4 rounded-xl bg-slate-800/30 border border-slate-800">
                             <span class="text-xs font-semibold text-slate-400 uppercase block mb-1" id="specLabel1">
                                 🎨 Atmosfer & Stil
@@ -291,7 +286,6 @@
                                 Retro Sci-Fi, Koyu Voksel Grafik
                             </p>
                         </div>
-                        <!-- Spec Item 2 -->
                         <div class="p-4 rounded-xl bg-slate-800/30 border border-slate-800">
                             <span class="text-xs font-semibold text-slate-400 uppercase block mb-1" id="specLabel2">
                                 ⚙️ Ana Mekanik
@@ -302,7 +296,6 @@
                         </div>
                     </div>
 
-                    <!-- Sürpriz Twist / İnovasyon -->
                     <div class="p-4 rounded-xl bg-purple-950/20 border border-purple-500/20">
                         <span class="text-xs font-bold uppercase text-purple-400 tracking-wider block mb-1">
                             <i class="fa-solid fa-bolt mr-1"></i> Sürpriz Twist / Fark Yaratan Özellik
@@ -312,22 +305,18 @@
                         </p>
                     </div>
 
-                    <!-- Tag List -->
                     <div class="pt-2">
                         <span class="text-xs font-mono uppercase text-slate-400 block mb-2">ETİKETLER</span>
-                        <div id="resultTags" class="flex flex-wrap gap-2">
-                            <!-- Tags will be injected here -->
-                        </div>
+                        <div id="resultTags" class="flex flex-wrap gap-2"></div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- Saved Ideas Library Modal -->
+    <!-- Kaydedilen Fikirler Modalı -->
     <div id="savedModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
         <div class="glass-panel w-full max-w-2xl rounded-2xl border border-slate-700 flex flex-col max-h-[85vh] overflow-hidden">
-            <!-- Modal Header -->
             <div class="p-5 border-b border-slate-800 flex items-center justify-between">
                 <div class="flex items-center gap-2">
                     <i class="fa-solid fa-bookmark text-purple-400 text-lg"></i>
@@ -338,12 +327,8 @@
                 </button>
             </div>
 
-            <!-- Modal Content List -->
-            <div id="savedListContainer" class="p-5 overflow-y-auto space-y-4 flex-1">
-                <!-- Dynamic Content injected here -->
-            </div>
+            <div id="savedListContainer" class="p-5 overflow-y-auto space-y-4 flex-1"></div>
 
-            <!-- Modal Footer -->
             <div class="p-4 border-t border-slate-800 flex justify-between items-center bg-slate-900/60">
                 <button onclick="clearAllSaved()" class="text-xs text-rose-400 hover:text-rose-300 font-semibold px-3 py-1.5 rounded-lg hover:bg-rose-500/10 transition-all">
                     <i class="fa-solid fa-trash mr-1"></i> Tümünü Temizle
@@ -355,13 +340,13 @@
         </div>
     </div>
 
-    <!-- Notification Toast Notification -->
+    <!-- Bildirim Kutusu (Toast) -->
     <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 glass-panel border border-cyan-500/50 px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3 text-sm text-cyan-300">
         <i class="fa-solid fa-circle-check text-cyan-400 text-base"></i>
         <span id="toastMsg">İşlem başarılı!</span>
     </div>
 
-    <!-- Footer -->
+    <!-- Alt Bilgi (Footer) -->
     <footer class="w-full border-t border-slate-800/80 glass-panel py-4 text-center text-xs text-slate-500">
         <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-2">
             <div>Fikir Dişlisi (Idea Gear) • Açık Kaynak Topluluk Projesi</div>
@@ -373,8 +358,8 @@
         </div>
     </footer>
 
+    <!-- JavaScript Kodları -->
     <script>
-        // Comprehensive procedural dataset for rich idea synthesis
         const ideaDatabase = {
             "Oyun": {
                 titlesPrefix: ["Neon", "Karanlık", "Derin", "Sonsuz", "Kuantum", "Astra", "Pikselli", "Sibernetik", "Efsunlu", "Terk Edilmiş"],
@@ -433,14 +418,12 @@
             }
         };
 
-        // Current application state
         let currentCategory = "Oyun";
         let currentGeneratedIdea = null;
         let savedIdeas = JSON.parse(localStorage.getItem("fikir_dislisi_saved") || "[]");
         let audioMuted = false;
         let audioCtx = null;
 
-        // Web Audio API Synthesizer for mechanical clicks and chime effects
         function playAudioEffect(type) {
             if (audioMuted) return;
             try {
@@ -452,7 +435,6 @@
                 }
 
                 if (type === 'gearClick') {
-                    // Quick mechanical ratchet click
                     const osc = audioCtx.createOscillator();
                     const gain = audioCtx.createGain();
                     osc.type = 'sawtooth';
@@ -464,7 +446,6 @@
                     osc.start();
                     osc.stop(audioCtx.currentTime + 0.05);
                 } else if (type === 'successChime') {
-                    // Futuristic synth chime
                     const now = audioCtx.currentTime;
                     const osc1 = audioCtx.createOscillator();
                     const osc2 = audioCtx.createOscillator();
@@ -473,12 +454,12 @@
                     osc1.type = 'sine';
                     osc2.type = 'triangle';
                     
-                    osc1.frequency.setValueAtTime(523.25, now); // C5
-                    osc1.frequency.exponentialRampToValueAtTime(659.25, now + 0.15); // E5
-                    osc1.frequency.exponentialRampToValueAtTime(783.99, now + 0.3); // G5
+                    osc1.frequency.setValueAtTime(523.25, now);
+                    osc1.frequency.exponentialRampToValueAtTime(659.25, now + 0.15);
+                    osc1.frequency.exponentialRampToValueAtTime(783.99, now + 0.3);
                     
-                    osc2.frequency.setValueAtTime(261.63, now); // C4
-                    osc2.frequency.exponentialRampToValueAtTime(329.63, now + 0.3); // E4
+                    osc2.frequency.setValueAtTime(261.63, now);
+                    osc2.frequency.exponentialRampToValueAtTime(329.63, now + 0.3);
 
                     gain.gain.setValueAtTime(0.15, now);
                     gain.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
@@ -493,7 +474,7 @@
                     osc2.stop(now + 0.5);
                 }
             } catch (e) {
-                console.log("Audio not supported or blocked", e);
+                console.log("Audio Error", e);
             }
         }
 
@@ -510,8 +491,6 @@
 
         function setCategory(catName) {
             currentCategory = catName;
-            
-            // Update button styles
             const buttons = document.querySelectorAll('.cat-btn');
             buttons.forEach(btn => {
                 const isTarget = btn.getAttribute('data-cat') === catName;
@@ -521,7 +500,6 @@
                     btn.className = "cat-btn border border-slate-700/60 hover:border-slate-500 bg-slate-800/40 text-slate-300 font-semibold p-3 rounded-xl flex flex-col items-center justify-center gap-1.5 text-xs transition-all";
                 }
             });
-
             playAudioEffect('gearClick');
         }
 
@@ -599,15 +577,11 @@
             const gearIcon = document.getElementById("mainGearIcon");
             const gearGlow = document.getElementById("gearGlow");
 
-            // Prevent multi-clicking during animation
             btn.disabled = true;
-
-            // Visual feedback: Spin fast
             gearIcon.classList.add("spinning-fast");
             gearGlow.classList.remove("opacity-40");
             gearGlow.classList.add("opacity-90", "scale-150");
 
-            // Sound intervals during gear spin
             let clicks = 0;
             const interval = setInterval(() => {
                 playAudioEffect('gearClick');
@@ -615,18 +589,15 @@
                 if (clicks > 5) clearInterval(interval);
             }, 80);
 
-            // Finish generation after 600ms
             setTimeout(() => {
                 gearIcon.classList.remove("spinning-fast");
                 gearGlow.classList.remove("opacity-90", "scale-150");
                 gearGlow.classList.add("opacity-40");
                 btn.disabled = false;
 
-                // Procedural generation
                 currentGeneratedIdea = generateProceduralIdea(currentCategory);
                 renderGeneratedIdea(currentGeneratedIdea);
                 playAudioEffect('successChime');
-
             }, 600);
         }
 
@@ -635,7 +606,6 @@
             const card = document.getElementById("resultCard");
             card.classList.remove("hidden");
 
-            // Fill card fields
             document.getElementById("resultCategoryBadge").innerHTML = getCategoryIconHtml(idea.category) + " " + idea.category.toUpperCase();
             document.getElementById("resultTitle").innerText = idea.title;
             document.getElementById("resultSummary").innerText = idea.summary;
@@ -647,16 +617,12 @@
             
             document.getElementById("resultTwist").innerText = idea.twist;
 
-            // Tags
             const tagsContainer = document.getElementById("resultTags");
             tagsContainer.innerHTML = idea.tags.map(t => 
                 `<span class="px-2.5 py-1 rounded-md text-[11px] font-mono bg-slate-800 text-slate-300 border border-slate-700">#${t}</span>`
             ).join('');
 
-            // Reset Save Button state
             updateSaveButtonState();
-
-            // Smooth Scroll into view on mobile
             card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
 
@@ -681,7 +647,6 @@
                                `💡 Sürpriz Twist: ${currentGeneratedIdea.twist}\n\n` +
                                `#FikirDişlisi #IdeaGear`;
 
-            // Standard fallback copy method
             const tempInput = document.createElement("textarea");
             tempInput.value = textToCopy;
             document.body.appendChild(tempInput);
@@ -699,11 +664,9 @@
             const existingIndex = savedIdeas.findIndex(item => item.id === currentGeneratedIdea.id || item.title === currentGeneratedIdea.title);
             
             if (existingIndex >= 0) {
-                // Remove
                 savedIdeas.splice(existingIndex, 1);
                 showToast("Fikir kütüphaneden çıkarıldı.");
             } else {
-                // Add
                 savedIdeas.unshift(currentGeneratedIdea);
                 showToast("Fikir kütüphaneye kaydedildi!");
             }
@@ -804,10 +767,8 @@
             }, 2500);
         }
 
-        // Global Keyboard Shortcut: Space or Enter to spin gear
         window.addEventListener("keydown", (e) => {
             if (e.code === "Space" || e.code === "Enter") {
-                // If focus is not inside an input
                 if (document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
                     e.preventDefault();
                     runGearEngine();
@@ -815,7 +776,6 @@
             }
         });
 
-        // Initial setup
         window.onload = function() {
             updateSavedBadge();
         };
